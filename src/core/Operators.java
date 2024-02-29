@@ -1,7 +1,7 @@
 package core;
 
 public enum Operators {
-    PLUS("+"), MULTI("*"), DIVIDE("/");
+    PLUS("+"), MULTI("*"), DIVIDE("/"), MINUS("-");
 
     private final String operator;
 

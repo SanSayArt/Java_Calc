@@ -6,17 +6,17 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class ControllerForUsers {
-    private final Calculable calculator;
+    private final Calculable calc;
     private final List<String> validOperators;
 
     public ControllerForUsers(Calculable calculator) {
-        this.calculator = calculator;
+        this.calc = calculator;
         this.validOperators = Arrays.stream(Operators.values())
                 .map(Operators::operator)
                 .collect(Collectors.toList());;
     }
 
-    public String prompt(String message){
+    public String ReadConsole(String message){
         Scanner in = new Scanner(System.in);
         System.out.println(message);
         return in.nextLine();
@@ -24,8 +24,8 @@ public class ControllerForUsers {
 
     public ComplexNumb initiateNumber(String message){
         System.out.println(message);
-        String firstPart = prompt("Введите вещественную часть комплексного числа: ");
-        String secondPart = prompt("Введите мнимую часть комплексного числа: ");
+        String firstPart = ReadConsole("Введите вещественную часть комплексного числа: ");
+        String secondPart = ReadConsole("Введите мнимую часть комплексного числа: ");
 
         double first = Double.parseDouble(firstPart);
         double second = Double.parseDouble(secondPart);
@@ -39,11 +39,11 @@ public class ControllerForUsers {
     }
 
     public String getOperator(){
-        String operator = prompt("Введите математическую операцию (+ , * , / ) : ");
+        String operator = ReadConsole("Введите математическую операцию (+ , - , * , / ) : ");
         while(true){
             if(isInvalidOperator(operator)){
                 System.err.println("Введен неизвестный оператор. ");
-                operator = prompt("Введите математическую операцию (+ , * , / ) :");
+                operator = ReadConsole("Введите математическую операцию (+ , - , * , / ) :");
             } else return operator;
         }
     }
@@ -53,16 +53,19 @@ public class ControllerForUsers {
         String operator = getOperator();
         ComplexNumb b = initiateNumber("Второе комплескное число: ");
         if(operator.equals("*")){
-            calculator.multiply(a,b);
+            calc.multiply(a,b);
         }
         if(operator.equals("+")){
-            calculator.sum(a,b);
+            calc.sum(a,b);
         }
         if(operator.equals("/")){
-            calculator.divide(a,b);
+            calc.divide(a,b);
+        }
+        if(operator.equals("-")){
+            calc.diff(a,b);
         }
 
-        System.out.println(calculator.calculationResult());
-        calculator.clear();
+        System.out.println(calc.calculationResult());
+        calc.clear();
     }
 }

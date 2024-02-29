@@ -9,21 +9,26 @@ public class Logger implements Calculable{
 
     @Override
     public void sum(ComplexNumb a, ComplexNumb b) {
-        System.out.printf("Cуммирую: (%s) + (%s) = ", a,b);
+        System.out.printf("Произведено сложение: (%s) + (%s) = ", a,b);
         calculate.sum(a,b);
 
+    }
+    @Override
+    public void diff(ComplexNumb a, ComplexNumb b){
+        System.out.printf("Произведено вычитание: (%s) - (%s) = ", a, b);
+        calculate.diff(a,b);
     }
 
     @Override
     public void multiply(ComplexNumb a, ComplexNumb b) {
-        System.out.printf("Умножаю: (%s) * (%s) = ",a,b);
+        System.out.printf("Произведено умножение: (%s) * (%s) = ",a,b);
         calculate.multiply(a,b);
 
     }
 
     @Override
     public void divide(ComplexNumb a, ComplexNumb b) {
-        System.out.printf("Делю: (%s) / (%s) = ", a,b);
+        System.out.printf("Произведено деление: (%s) / (%s) = ", a,b);
         calculate.divide(a,b);
 
     }

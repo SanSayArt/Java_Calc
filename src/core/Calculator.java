@@ -16,7 +16,13 @@ public class Calculator implements Calculable {
         result = new ComplexNumb(firstPart, secondPart);
 
     }
+    @Override
+    public void diff(ComplexNumb a, ComplexNumb b) {
+        firstPart = a.getA() - b.getA();
+        secondPart = a.getB() - b.getB();
+        result = new ComplexNumb(firstPart, secondPart);
 
+    }
     @Override
     public void multiply(ComplexNumb a, ComplexNumb b) {
         firstPart = (a.getA() * b.getA()) - (a.getB() * b.getB());

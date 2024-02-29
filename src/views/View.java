@@ -12,18 +12,7 @@ public class View {
     }
 
     public void run() {
-        while(true) {
-            controllerForUsers.prepare();
-            String action = prompt();
-            if (!action.equalsIgnoreCase("y")) {
-                System.exit(0);
-            }
-        }
+        controllerForUsers.prepare();
     }
 
-    private String prompt() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Вы хотите продолжить?... (y/n)");
-        return in.nextLine();
-    }
 }
